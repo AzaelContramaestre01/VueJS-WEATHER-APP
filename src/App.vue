@@ -2,7 +2,23 @@
   <div id="app">
     <main>
       <div class="search-box">
-        <input type="text" name="" id="" class="search-bar" placeholder="Search. . .">
+        <input type="text" 
+        name="" id="" 
+        class="search-bar" 
+        placeholder="Search. . ."
+        v-model="query"
+        @keypress="fetchWeather"
+        />
+      </div>
+      <div class="weather-wrap">
+        <div class="location-box">
+          <div class="location">Punta Arenas, Chile</div>
+          <div class="date">Jueves 15, Marzo, 2021</div>
+        </div>
+        <div class="weather-box">
+          <div class="temp">5 C°</div>
+          <div class="weather">Rain</div>
+        </div>
       </div>
     </main>
   </div>
@@ -13,9 +29,16 @@ export default {
   name: 'App',
   data () {
     return {
-      api_key: "6a64252f5aa08424a201683d80a09439"
+      api_key: "6a64252f5aa08424a201683d80a09439",
+      url_base: "https://api.openweathermap.org/data/2.5/",
+      query: '',
+      weather: {}
+
+    }
+  },
+  methods: {
+
   }
-}
 }
 
 </script>
@@ -73,5 +96,49 @@ main {
 .search-bar .search-box:focus{
   background-color: rgba(255,255,255,0.75);
   box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+}
+
+
+.location-box .location {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 1px 3px rgba(0,0,0,0.25);
+}
+
+.location-box .date {
+   color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  font-style: italic;
+  text-shadow: 1px 3px rgba(0,0,0,0.25);
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box .temp {
+  display: inline-block;
+  padding: 10px 25px;
+  color: #fff;
+  font-size: 102px;
+  font-weight: 900;
+
+  text-shadow: 3px 6px rgba(0,0,0,0.25);
+  background-color: rgba(255,255,255,0.25);
+  border-radius: 16px;
+  margin: 30px 0px;
+  box-shadow: 3px 6px rgba(0,0,0,0.25);
+}
+
+.weather-box .weather{
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 3px 6px rgba(0,0,0,0.25);
 }
 </style>
